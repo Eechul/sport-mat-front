@@ -1,1 +1,21 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    src: url('./assets/fonts/NanumBarunGothic.eot');
+    src: url('./assets/fonts/NanumBarunGothic.eot') format('embedded-opentype'),
+    url('./assets/fonts/NanumBarunGothic.woff') format('woff');
+}
+
+*{
+    font-family: 'NanumBarunGothic', '-apple-system', 'BlinkMacSystemFont', 'Apple SD Gothic Neo', 'Noto Sans Korean', 'sans-serif';
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+
+
+body {font-family: 'NanumBarunGothic', 'serif';}
+.el-col { padding-top: 6px; padding-bottom: 6px; }
 .title-label { padding-bottom: 16px; font-size: 20px; }
