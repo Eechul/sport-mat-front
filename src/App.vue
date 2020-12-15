@@ -11,14 +11,16 @@
 <!--          <el-menu-item index="/user/profile">프로필</el-menu-item>-->
 <!--        </el-submenu>-->
 <!--          <el-menu-item index="/login" class="fright">로그인/ 로그인 중 일땐 아래로 열림</el-menu-item>-->
-
-
       </el-menu>
     </el-header>
 
     <el-main id="main">
       <router-view />
     </el-main>
+
+<!--    <el-footer>-->
+<!--      -->
+<!--    </el-footer>-->
   </el-container>
 </template>
 <script>
@@ -50,7 +52,9 @@
   }
   #app{}
   #main{
+
     padding-top: 60px;
+    padding-left: ;
   }
   .el-header{
     padding: 0;

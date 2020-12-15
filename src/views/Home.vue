@@ -2,13 +2,13 @@
   <div id="main-container">
     <el-row>
       <el-col :span="24">
-        <div class="promotion-txt">스포츠 팀을 구하고</div>
-        <div class="promotion-txt">경기를 매칭해보세요!</div>
+        <div class="promotion-txt">원하는 종목의 스포츠 팀을 구하고</div>
+        <div class="promotion-txt">경기를 매칭해보세요 <emoji emoji="dart" :size="42" class="prmt-emoji"/></div>
       </el-col>
       <el-col>
         <carousel
             :type="'card'"
-            :height="'350px'"
+            :height="'320px'"
             :datas="[
                 {title: '공지1', imgUrl: '../assets/img_notice_baseball.jpg'},
                 {title: '공지2', imgUrl: '../assets/img_notice_baseball.jpg'},
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import { Emoji } from 'emoji-mart-vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 import Carousel from "@/components/Carousel"
 import BaseCard from "@/components/Card/BaseCard"
@@ -48,14 +48,15 @@ export default {
     HelloWorld,
     Carousel,
     BaseCard,
+    Emoji
   },
   data() {
     return {
       card1: [
-        { id: '1', sport: 'soccer', title: 'title1', img: '', regDate: new Date() },
-        { id: '2', sport: 'basketball', title: 'title2', img: '', regDate: new Date() },
-        { id: '3', sport: 'volleyball', title: 'title2', img: '', regDate: new Date() },
-        { id: '4', sport: 'bowling', title: 'title2', img: '', regDate: new Date() }
+        { id: '4', sport: 'bowling', team: '조선', title: '조선', location: '인천 어디구', startDate: '2020-12-01', img: '', regDate: new Date() },
+        { id: '3', sport: 'volleyball', team: '동아', title: '동아', location: '인천 남동구', startDate: '2020-11-21', img: '', regDate: new Date() },
+        { id: '2', sport: 'basketball', team: '기아', title: '기아', location: '서울 관악구', startDate: '2020-11-11', img: '', regDate: new Date() },
+        { id: '1', sport: 'soccer', team: '금하', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
       ],
       card2: [{  }, {  }],
     }
