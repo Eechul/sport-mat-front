@@ -1,5 +1,5 @@
 <template>
-  <div id="team-container">
+  <div id="team-container" class="sub-container">
     <el-row type="flex" class="row-bg" justify="center">
       <el-col :span="16">
 <!--        :tab-position="'left'" // 모바일-->

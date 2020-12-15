@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    src: url('../../assets/fonts/NanumBarunGothic.eot');
+    src: url('../../assets/fonts/NanumBarunGothic.eot') format('embedded-opentype'),
+    url('../../assets/fonts/NanumBarunGothic.woff') format('woff');
+}
+
+* {
+    font-family: 'NanumBarunGothic', '-apple-system', 'BlinkMacSystemFont', 'Apple SD Gothic Neo', 'Noto Sans Korean', 'sans-serif';
+    word-break: keep-all;
+    /*overflow-wrap: break-word;*/
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+    /*text-rendering: optimizeLegibility;*/
+}
+
+/*로고는 이미지로 대체하기*/
+#ft-logo { display: inline-block; font-family: 'Gamja Flower'; font-size: 24px; color: #0AC5A8; transform: rotate(-5deg); }
+.header-wrapper,.sub-container  { width: 1140px; margin: 0 auto; }
+@media (max-width: 1140px) {
+    .header-wrapper, .sub-container { width: 100% }
+}
+.tit { font-size: 20px; }
+.el-col { padding-top: 6px; padding-bottom: 6px; }
+.el-menu--horizontal>.el-menu-item.is-active { border-bottom-color: transparent }
+.el-button.is-loading:before { background-color: transparent }
+a.non-link:hover { font-weight: 700; }
+a.non-link:link, a.non-link:visited { color: inherit; }
+
+.ma0 { margin: 0 0 !important; }
+.mt0 { margin-top: 0 !important; }
+.mr0 { margin-right: 0 !important; }
+.mb0 { margin-bottom: 0 !important; }
+.ml0 { margin-left: 0 !important; }
+.pa0 { padding: 0 0 !important; }
+.pt0 { padding-top: 0 !important; }
+.pr0 { padding-right: 0 !important; }
+.pb0 { padding-bottom: 0 !important; }
+.pl0 { padding-left: 0 !important; }
+
+.lright { float: left !important; }
+.fright { float: right !important; }
+.txt-left { text-align: left; }
+.txt-center { text-align: center; }
+.txt-right { text-align: right; }
+
+.w100 { width: 100px !important; }
+.w100p { width: 100% !important; }
+
+body {font-family: 'NanumBarunGothic', 'serif';}

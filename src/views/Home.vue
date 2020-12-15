@@ -1,5 +1,5 @@
 <template>
-  <div id="main-container">
+  <div id="main-container" class="sub-container">
     <el-row>
       <el-col :span="24">
         <div class="promotion-txt">원하는 종목의 스포츠 팀을 구하고</div>
@@ -19,7 +19,7 @@
 
     <el-row class="group-main-wait-team">
       <el-col :span="24" >
-        <div class="block title-label" span="4" offset="1">대기중인 팀</div>
+        <div class="block tit" span="4" offset="1">대기중인 팀</div>
       </el-col>
       <el-col :span="4" :offset="1" v-for="card in card1" :key="card.id">
 <!--        <card :data="card" :type="'image'" :content="null"/>-->

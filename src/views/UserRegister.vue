@@ -1,18 +1,20 @@
 <template>
-  <div id="user-register-container">
-    <el-row type="flex" class="row-bg" justify="center" align="middle" style="height: 50em">
+  <div id="user-register-container" class="sub-container">
+    <el-row type="flex" class="content" justify="center" align="middle" style="height: 35em">
       <el-col :xs="20" :sm="14" :md="12" :lg="10" :xl="12">
         <el-form
             :model="registerForm"
             status-icon
             :rules="rules"
             ref="registerForm"
-            label-width="100px"
             label-position="left"
             :hide-required-asterisk="true"
             class="demo-ruleForm">
           <el-form-item prop="email">
-            <el-input placeholder="이메일" v-model="registerForm.email" autocomplete="off">
+            <div class="tit ma0 txt-left">가입</div>
+          </el-form-item>
+          <el-form-item prop="email">
+            <el-input v-model="registerForm.email" placeholder="이메일" autocomplete="off">
               <template slot="prepend"><emoji emoji="email" :size="20" /></template>
             </el-input>
           </el-form-item>
@@ -66,7 +68,7 @@ export default {
     },
     validatePassword2(rule, value, callback) {
       if (value === '') {
-        callback(new Error('패스워드를 입력해주세요.'));
+        callback(new Error('패스워드를 재입력 해주세요.'));
       } else if (value !== this.registerForm.password) {
         callback(new Error('두 패스워드가 맞지 않습니다 :('));
       } else {
@@ -102,6 +104,12 @@ export default {
         ],
         passwordChk: [
           { validator: this.validatePassword2, trigger: 'blur' },
+        ],
+        nickname: [
+          { required: true, message: '닉네임을 입력해주세요.', trigger: 'blur' },
+        ],
+        myselfIntrodution: [
+          { required: false },
         ],
       }
     };
