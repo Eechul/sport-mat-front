@@ -26,6 +26,8 @@
 .el-button.is-loading:before { background-color: transparent }
 a.non-link:hover { font-weight: 700; }
 a.non-link:link, a.non-link:visited { color: inherit; }
+.el-button.default { color: initial; }
+
 
 .ma0 { margin: 0 0 !important; }
 .mt0 { margin-top: 0 !important; }
@@ -46,5 +48,7 @@ a.non-link:link, a.non-link:visited { color: inherit; }
 
 .w100 { width: 100px !important; }
 .w100p { width: 100% !important; }
+
+.underline { text-underline: #333333; }
 
 body {font-family: 'NanumBarunGothic', 'serif';}

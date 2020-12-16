@@ -1,7 +1,6 @@
 <template>
-  <div id="user-register-container" class="sub-container">
     <el-row type="flex" class="content" justify="center" align="middle" style="height: 35em">
-      <el-col :xs="20" :sm="14" :md="12" :lg="10" :xl="12">
+      <el-col :xs="20" :sm="14" :md="12" :lg="10" :xl="12" v-if="!registerComplete">
         <el-form
             :model="registerForm"
             status-icon
@@ -10,7 +9,7 @@
             label-position="left"
             :hide-required-asterisk="true"
             class="demo-ruleForm">
-          <el-form-item prop="email">
+          <el-form-item>
             <div class="tit ma0 txt-left">가입</div>
           </el-form-item>
           <el-form-item prop="email">
@@ -19,7 +18,7 @@
             </el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input type="password" v-model="registerForm.password" placeholder="비밀번호. 16자 이상 입력" autocomplete="off">
+            <el-input type="password" v-model="registerForm.password" placeholder="비밀번호. 16자 입력" autocomplete="off">
               <template slot="prepend"><emoji emoji="key" :size="20" /></template>
             </el-input>
           </el-form-item>
@@ -42,8 +41,15 @@
         </el-form>
       </el-col>
 
+      <el-col :xs="20" :sm="14" :md="12" :lg="10" :xl="12" class="txt-center" v-if="registerComplete">
+        (메일 서비스 개발중)<emoji emoji="postbox" :size="64" /> <br /> <br />
+        choise154@gmail.com 계정의 메일을 확인 해주시고 <br />  메일 인증을 해주세요.
+     </el-col>
+<!--      <el-col :xs="20" :sm="14" :md="12" :lg="10" :xl="12" class="txt-center" v-if="registerComplete">-->
+<!--        <emoji emoji="tada" :size="38" /> 가입을 축하드려요 ! <br /> <br />-->
+<!--        이제  <router-link to="/team/create" class="non-link">팀을 만들</router-link>거나 <router-link to="/team" class="non-link">팀에 참여</router-link>해보세요.-->
+<!--      </el-col>-->
     </el-row>
-  </div>
 </template>
 
 <script>
@@ -76,17 +82,20 @@ export default {
       }
     },
     doRegister(formName) {
-      this.$refs[formName].validate( valid => {
-        if(valid) {
-          alert('submit!')
-        } else {
-          return false
-        }
+      this.$refs[formName].validate( () => {
+        // if(valid) {
+        //   alert('submit!')
+        // } else {
+        //   return false
+        // }
+        alert('테스트 중이라 validation 넘어감!')
+        this.registerComplete = true
       })
     }
   },
   data() {
     return {
+      registerComplete: false,
       registerForm: {
         email: '',
         password: '',

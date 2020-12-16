@@ -9,7 +9,7 @@
           label-position="left"
           :hide-required-asterisk="true"
           class="demo-ruleForm">
-        <el-form-item prop="email">
+        <el-form-item>
           <div class="tit ma0 txt-left">로그인</div>
         </el-form-item>
         <el-form-item prop="email">
@@ -23,8 +23,8 @@
           </el-input>
         </el-form-item>
         <el-form-item class="ma0">
-          <div class="ma0 txt-left"><a href="/login?misspassword=true" class="non-link">비밀번호를 잊어버리셨나요?<emoji emoji="mag_right" :size="16" /></a></div>
-          <div class="txt-left"><a href="/user/register" class="non-link">아니면 아직 회원이 아니세요?<emoji emoji="writing_hand" :size="16" /></a></div>
+          <div class="ma0 txt-left"><el-button type="text" class="default" @click="goToPage('/login/misspass')">비밀번호를 잊어버리셨나요?<emoji emoji="mag_right" :size="16" /></el-button></div>
+          <div class="txt-left"><el-button type="text" class="default" @click="goToPage('/login/register')">아니면 아직 회원이 아니세요?<emoji emoji="writing_hand" :size="16" /></el-button></div>
         </el-form-item>
         <el-form-item>
           <el-button type="primary w100p" class="fright" @click="doLogin('ruleForm')" :loading="false">로그인</el-button>
@@ -43,6 +43,9 @@ export default {
     Emoji,
   },
   methods: {
+    goToPage(url) {
+      this.$router.push(url)
+    },
     doLogin(formName) {
       this.$refs[formName].validate(() => {
         // if(valid) {
@@ -54,9 +57,6 @@ export default {
         this.$store.dispatch('login')
         this.$router.push('/')
       })
-    },
-    goMisspassword() {
-
     }
   },
   data() {

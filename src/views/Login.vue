@@ -1,26 +1,21 @@
 <template>
   <div id="login-container" class="sub-container">
-      <login-form />
-<!--      <misspassword-form/>-->
+      <router-view/>
   </div>
 </template>
 
 <script>
-import LoginForm from "@/components/LoginForm";
-// import MisspasswordForm from "@/components/MisspasswordForm";
-
 export default {
   name: "Login",
   components: {
-    LoginForm,
-    // MisspasswordForm
   },
-  created() {
-    console.log(location.query)
-    console.log(location.params)
-  },
+  created() {},
   mounted() {
-
+    console.log(this.$route.params)
+  },
+  data() {
+    return {
+    }
   }
 }
 </script>

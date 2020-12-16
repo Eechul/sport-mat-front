@@ -12,6 +12,9 @@ export default new Vuex.Store({
     //   status: 'logout'
     // },
     login: 'logout',
+    view: {
+      isMisspassView: false
+    }
   },
   getters: Getters,
   mutations: Mutations,

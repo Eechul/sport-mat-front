@@ -1,31 +1,18 @@
 <template>
   <div id="team-container" class="sub-container">
-    <el-row type="flex" class="row-bg" justify="center">
-      <el-col :span="16">
+    <el-row>
+      <el-col :span="24">
 <!--        :tab-position="'left'" // 모바일-->
-        <el-tabs class="grid-content" v-model="activeName" :tab-position="'top'" @tab-click="handleClick">
+        <el-tabs class="grid-content" v-model="activeName" :tab-position="'left'" @tab-click="handleClick" style="width: 100%;">
           <el-tab-pane name="soccer">
             <span slot="label">축구<emoji emoji="soccer" :size="16" class="tabs-emoji"/></span>
-            <el-row :gutter="12">
-              <el-col :span="8">
+            <el-row :gutter="6">
+              <el-col :span="cardSpan" v-for="data in 4" :key="data">
                 <el-card shadow="hover">
-                  Hover
-                </el-card>
-              </el-col>
-              <el-col :span="8">
-                <el-card shadow="hover">
-                  Hover
-                </el-card>
-              </el-col>
-              <el-col :span="8">
-                <el-card shadow="hover">
-                  Hover
+                  {{ data }}
                 </el-card>
               </el-col>
             </el-row>
-
-
-
           </el-tab-pane>
           <el-tab-pane name="baseball">
             <span slot="label">야구<emoji emoji="baseball" :size="16" class="tabs-emoji"/></span>
@@ -85,9 +72,27 @@ export default {
         name: 'Tom',
         address: 'No. 189, Grove St, Los Angeles'
       }],
+      cardSpan: 8
     }
   },
+  mounted() {
+    console.log(window.innerWidth)
+    this.changeSpan(window.innerWidth)
+    window.addEventListener('resize', this.handleResize)
+  },
   methods: {
+    changeSpan(currWidth) {
+      if(currWidth < 420) {
+        this.cardSpan = 24
+      }else if(currWidth < 820) {
+        this.cardSpan = 12
+      } else {
+        this.cardSpan = 8
+      }
+    },
+    handleResize() {
+      this.changeSpan(window.innerWidth)
+    },
     handleClick() {
 
     }
@@ -95,6 +100,8 @@ export default {
 }
 </script>
 <style scoped>
-
+   .el-tab-pane .el-row {
+      margin-right: 0 !important;
+    }
 
 </style>

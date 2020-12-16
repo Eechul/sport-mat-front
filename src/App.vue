@@ -6,17 +6,17 @@
       <router-view />
     </el-main>
 
-    <footer-view />
+<!--    <footer-view />-->
   </el-container>
 </template>
 <script>
 import NavigationView from "@/components/NavigationView";
-import FooterView from "@/components/FooterView";
+// import FooterView from "@/components/FooterView";
 
 export default {
    components: {
      NavigationView,
-     FooterView
+     // FooterView
    }
  }
 </script>

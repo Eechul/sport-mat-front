@@ -1,4 +1,9 @@
 
 export default {
-    getLoginStatus: (state) => state.login
+    getLoginStatus: (state) => {
+        return state.login
+    },
+    getIsMisspassView: (state) => {
+        return state.isMisspassView
+    }
 }
