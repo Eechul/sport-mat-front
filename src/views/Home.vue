@@ -40,7 +40,7 @@
 import { Emoji } from 'emoji-mart-vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 import Carousel from "@/components/Carousel"
-import BaseCard from "@/components/Card/BaseCard"
+import BaseCard from "@/components/card/BaseCard"
 
 export default {
   name: 'Home',

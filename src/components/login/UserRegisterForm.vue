@@ -41,10 +41,7 @@
         </el-form>
       </el-col>
 
-      <el-col :xs="20" :sm="14" :md="12" :lg="10" :xl="12" class="txt-center" v-if="registerComplete">
-        (메일 서비스 개발중)<emoji emoji="postbox" :size="64" /> <br /> <br />
-        choise154@gmail.com 계정의 메일을 확인 해주시고 <br />  메일 인증을 해주세요.
-     </el-col>
+      <finish-send-mail-form v-if="registerComplete" :email="'choise154@gmail.com'"/>
 <!--      <el-col :xs="20" :sm="14" :md="12" :lg="10" :xl="12" class="txt-center" v-if="registerComplete">-->
 <!--        <emoji emoji="tada" :size="38" /> 가입을 축하드려요 ! <br /> <br />-->
 <!--        이제  <router-link to="/team/create" class="non-link">팀을 만들</router-link>거나 <router-link to="/team" class="non-link">팀에 참여</router-link>해보세요.-->
@@ -54,17 +51,51 @@
 
 <script>
 import { Emoji } from 'emoji-mart-vue'
+import FinishSendMailForm from "@/components/login/SendedEmailForm";
 
 export default {
   name: "Login",
   components: {
     Emoji,
+    FinishSendMailForm
+  },
+  data() {
+    return {
+      registerComplete: false,
+      registerForm: {
+        email: '',
+        password: '',
+        passwordChk: '',
+        nickname: '',
+        myselfIntrodution: '',
+      },
+      rules: {
+        email: [
+          { required: true, message: '이메일을 입력해주세요.', trigger: 'blur' },
+          { type: 'email', message: '이메일 규격에 맞게 정확히 입력해주세요.', trigger: ['blur', 'change'] }
+        ],
+        password: [
+          { validator: this.validatePassword1, trigger: 'blur' },
+        ],
+        passwordChk: [
+          { validator: this.validatePassword2, trigger: 'blur' },
+        ],
+        nickname: [
+          { required: true, message: '닉네임을 입력해주세요.', trigger: 'blur' },
+        ],
+        myselfIntrodution: [
+          { required: false },
+        ],
+      }
+    };
   },
   methods: {
     validatePassword1(rule, value, callback) {
       console.log(value, this.registerForm.passwordChk)
       if (value === '') {
         callback(new Error('패스워드를 입력해주세요.'));
+      } else if (value.length < 16) {
+        callback(new Error('패스워드는 16자 이상 입력해주세요.'))
       } else {
         if (this.registerForm.password !== '') {
           this.$refs.registerForm.validateField('passwordChk');
@@ -89,39 +120,9 @@ export default {
         //   return false
         // }
         alert('테스트 중이라 validation 넘어감!')
-        this.registerComplete = true
+        this.registerComplete= true
       })
     }
-  },
-  data() {
-    return {
-      registerComplete: false,
-      registerForm: {
-        email: '',
-        password: '',
-        passwordChk: '',
-        nickname: '',
-        myselfIntrodution: ''
-      },
-      rules: {
-        email: [
-          { required: true, message: '이메일을 입력해주세요.', trigger: 'blur' },
-          { type: 'email', message: '이메일 규격에 맞게 정확히 입력해주세요.', trigger: ['blur', 'change'] }
-        ],
-        password: [
-          { validator: this.validatePassword1, trigger: 'blur' },
-        ],
-        passwordChk: [
-          { validator: this.validatePassword2, trigger: 'blur' },
-        ],
-        nickname: [
-          { required: true, message: '닉네임을 입력해주세요.', trigger: 'blur' },
-        ],
-        myselfIntrodution: [
-          { required: false },
-        ],
-      }
-    };
   },
 }
 </script>

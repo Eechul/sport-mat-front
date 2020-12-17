@@ -8,6 +8,7 @@ import MisspasswordForm from "@/components/login/MisspasswordForm";
 import UserRegister from "@/components/login/UserRegisterForm";
 import LoginForm from "@/components/login/LoginForm";
 import User from "@/views/User";
+import NewpasswordForm from "@/components/user/NewpasswordForm";
 
 Vue.use(VueRouter)
 
@@ -21,8 +22,15 @@ const routes = [
       { path: 'register', component: UserRegister }
     ]
   },
-  { path: '/user', name: 'User', component: User },
-  { path: '/user/register', name: 'UserRegister', component: UserRegister }
+  { path: '/user', name: 'User', component: User,
+    children: [
+      // { path: '', component: User },
+      { path: 'newpass', component: NewpasswordForm, props: (route) => ({ query: route.query.token }) },
+      { path: 'newuser', component: UserRegister, props: (route) => ({ query: route.query.token }) }
+    ]
+  },
+  // { path: '/user', name: 'User', component: User },
+  // { path: '/user/register', name: 'UserRegister', component: UserRegister }
 ]
 
 const router = new VueRouter({

@@ -7,6 +7,7 @@ import store from './store'
 import 'element-ui/lib/theme-chalk/index.css'
 import '../element-variables.scss'
 import '@/assets/css/main.css'
+import '@/assets/css/utils.css'
 
 
 
