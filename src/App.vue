@@ -8,6 +8,7 @@
 
 <!--    <footer-view />-->
   </el-container>
+
 </template>
 <script>
 import NavigationView from "@/components/NavigationView";
@@ -21,20 +22,24 @@ export default {
  }
 </script>
 <style>
+  html,body{
+    margin: 0;
+    height:100%;
+    overflow: hidden;
+  }
   body {
-    margin: 0
+    /*margin: 0;*/
   }
   #app{}
   #main{
     padding: 60px 0px 0px 0px;
-    width: 100%
   }
   .el-header{
     padding: 0 !important;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
   }
 

@@ -13,7 +13,8 @@ export default new Vuex.Store({
     // },
     login: 'logout',
     view: {
-      isMisspassView: false
+      isMisspassView: false,
+      isMenuActive: false
     }
   },
   getters: Getters,

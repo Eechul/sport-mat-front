@@ -89,7 +89,6 @@ export default {
         // } else {
         //   return false
         // }
-        console.log('22')
         // 인증번호 매칭
         // 새로운 비밀번호 지정
       })
@@ -109,7 +108,6 @@ export default {
       }
     },
     validatePassword1(rule, value, callback) {
-      console.log(value, this.misspassForm.passwordChk)
       if (value === '') {
         callback(new Error('패스워드를 입력해주세요.'));
       } else {

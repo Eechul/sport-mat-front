@@ -9,9 +9,6 @@ import '../element-variables.scss'
 import '@/assets/css/main.css'
 import '@/assets/css/utils.css'
 
-
-
-
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)

@@ -14,11 +14,40 @@
     /*text-rendering: optimizeLegibility;*/
 }
 
+.header-wrapper, #main {
+    width: 100%;
+}
+.el-tabs {
+    position: relative;
+}
+/*.el-tabs__item.is-left {*/
+/*    !*padding-top: 12px;*!*/
+/*    !*padding-bottom: 12px;*!*/
+/*}*/
+@media (max-width: 1140px) {
+    .el-tabs__header.is-left {
+        position: fixed;
+        left: 0;
+        height: 200px;
+        width: 60px;
+        padding-top: 10px;
+    }
+    .el-tabs__header.is-left .sport-name {
+        display: none;
+    }
+    .el-tabs__content {
+        left: 70px;
+        width: calc(100% - 80px);
+    }
+}
+
+
+
 /*로고는 이미지로 대체하기*/
 #ft-logo { display: inline-block; font-family: 'Gamja Flower'; font-size: 24px; color: #0AC5A8; transform: rotate(-5deg); }
-.header-wrapper,.sub-container  { width: 1140px; margin: 0 auto; }
+.header-wrapper, #main  { width: 1140px; margin: 0 auto; }
 @media (max-width: 1140px) {
-    .header-wrapper, .sub-container { width: 100% }
+    .header-wrapper, #main { width: 100% }
 }
 .tit { font-size: 20px; }
 .el-col { padding-top: 6px; padding-bottom: 6px; }

@@ -21,9 +21,13 @@
       <el-col :span="24" >
         <div class="block tit" span="4" offset="1">대기중인 팀</div>
       </el-col>
-      <el-col :span="4" :offset="1" v-for="card in card1" :key="card.id">
+      <el-col :xs="{span: 24, offset: 0 }" :sm="{span: 12, offset: 0 }" :md="{span: 6, offset: 0 }" :lg="{span: 6, offset: 0 }" :xl="{span: 6, offset: 0 }"  v-for="card in card1" :key="card.id">
 <!--        <card :data="card" :type="'image'" :content="null"/>-->
-        <base-card :data="card" :type="'normal'"/>
+        <base-card
+            :data="card"
+            :type="'normal'"
+            :hidden="{}"
+        />
       </el-col>
     </el-row>
 
@@ -53,6 +57,7 @@ export default {
   data() {
     return {
       card1: [
+        { id: '5', sport: 'soccer', team: '금하', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
         { id: '4', sport: 'bowling', team: '조선', title: '조선', location: '인천 어디구', startDate: '2020-12-01', img: '', regDate: new Date() },
         { id: '3', sport: 'volleyball', team: '동아', title: '동아', location: '인천 남동구', startDate: '2020-11-21', img: '', regDate: new Date() },
         { id: '2', sport: 'basketball', team: '기아', title: '기아', location: '서울 관악구', startDate: '2020-11-11', img: '', regDate: new Date() },
@@ -66,7 +71,7 @@ export default {
 
 <style scoped>
   #main-container {
-    padding: 12px;
+    padding: 12px 12px;
   }
   .promotion-txt {
     font-size: 36px;

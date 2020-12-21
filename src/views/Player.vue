@@ -6,26 +6,20 @@
           <el-tab-pane name="soccer">
             <span slot="label"><span class="sport-name">축구</span><emoji emoji="soccer" :size="16" class="tabs-emoji"/></span>
             <el-row :gutter="6">
-              <el-scrollbar wrap-style="max-height: 50px" tag="el-col">
-<!--                <el-tag v-for="data in datas" :key="data.id"-->
-<!--                        type="info"-->
-<!--                        size="medium"-->
-<!--                        style="margin-right: 5px">{{data.sport}}</el-tag>-->
-                <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
-                    <base-card
-                        :data="data"
-                        :type="'normal'"
-                        :hidden="{sport: true, title: true, regDate: true}"
-                    />
-                </el-col>
-              </el-scrollbar>
+              <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
+                <player-card
+                    :data="data"
+                    :type="'normal'"
+                    :hidden="{sport: true, title: true, regDate: true}"
+                />
+              </el-col>
             </el-row>
           </el-tab-pane>
           <el-tab-pane name="baseball">
             <span slot="label"><span class="sport-name">야구</span><emoji emoji="baseball" :size="16" class="tabs-emoji"/></span>
             <el-row :gutter="6">
               <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
-                <base-card
+                <player-card
                     :data="data"
                     :type="'normal'"
                     :hidden="{sport: true, title: true, regDate: true}"
@@ -37,7 +31,7 @@
             <span slot="label"><span class="sport-name">농구</span><emoji emoji="basketball" :size="16" class="tabs-emoji"/></span>
             <el-row :gutter="6">
               <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
-                <base-card
+                <player-card
                     :data="data"
                     :type="'normal'"
                     :hidden="{sport: true, title: true, regDate: true}"
@@ -49,7 +43,7 @@
             <span slot="label"><span class="sport-name">배구</span><emoji emoji="volleyball" :size="16" class="tabs-emoji"/></span>
             <el-row :gutter="6">
               <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
-                <base-card
+                <player-card
                     :data="data"
                     :type="'normal'"
                     :hidden="{sport: true, title: true, regDate: true}"
@@ -61,7 +55,7 @@
             <span slot="label"><span class="sport-name">볼링</span><emoji emoji="bowling" :size="16" class="tabs-emoji"/></span>
             <el-row :gutter="6">
               <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
-                <base-card
+                <player-card
                     :data="data"
                     :type="'normal'"
                     :hidden="{sport: true, title: true, regDate: true}"
@@ -72,29 +66,27 @@
         </el-tabs>
       </el-col>
     </el-row>
-
-
   </div>
 </template>
 <script>
 import { Emoji } from 'emoji-mart-vue'
-import BaseCard from "@/components/card/BaseCard";
+import PlayerCard from "@/components/card/PlayerCard";
 
 export default {
   components: {
     Emoji,
-    BaseCard
+    PlayerCard
   },
   data() {
     return {
       activeName: 'soccer',
       datas: [
-      { id: '5', sport: 'soccer', team: '금하', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
-      { id: '4', sport: 'bowling', team: '조선', title: '조선', location: '인천 어디구', startDate: '2020-12-01', img: '', regDate: new Date() },
-      { id: '3', sport: 'volleyball', team: '동아', title: '동아', location: '인천 남동구', startDate: '2020-11-21', img: '', regDate: new Date() },
-      { id: '2', sport: 'basketball', team: '기아', title: '기아', location: '서울 관악구', startDate: '2020-11-11', img: '', regDate: new Date() },
-      { id: '1', sport: 'soccer', team: '금하', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
-    ],
+        { id: '5', sport: 'soccer', username: '조동진', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
+        { id: '4', sport: 'bowling', username: '이니에스타', title: '조선', location: '인천 어디구', startDate: '2020-12-01', img: '', regDate: new Date() },
+        { id: '3', sport: 'volleyball', username: '코코', title: '동아', location: '인천 남동구', startDate: '2020-11-21', img: '', regDate: new Date() },
+        { id: '2', sport: 'basketball', username: '박서연', title: '기아', location: '서울 관악구', startDate: '2020-11-11', img: '', regDate: new Date() },
+        { id: '1', sport: 'soccer', username: '흥미니', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
+      ],
       cardSpan: 8
     }
   },

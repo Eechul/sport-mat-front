@@ -18,7 +18,7 @@
             </el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input type="password" v-model="registerForm.password" placeholder="비밀번호. 16자 입력" autocomplete="off">
+            <el-input type="password" v-model="registerForm.password" :placeholder="passwordPlaceHolder" autocomplete="off">
               <template slot="prepend"><emoji emoji="key" :size="20" /></template>
             </el-input>
           </el-form-item>
@@ -42,16 +42,13 @@
       </el-col>
 
       <finish-send-mail-form v-if="registerComplete" :email="'choise154@gmail.com'"/>
-<!--      <el-col :xs="20" :sm="14" :md="12" :lg="10" :xl="12" class="txt-center" v-if="registerComplete">-->
-<!--        <emoji emoji="tada" :size="38" /> 가입을 축하드려요 ! <br /> <br />-->
-<!--        이제  <router-link to="/team/create" class="non-link">팀을 만들</router-link>거나 <router-link to="/team" class="non-link">팀에 참여</router-link>해보세요.-->
-<!--      </el-col>-->
     </el-row>
 </template>
 
 <script>
 import { Emoji } from 'emoji-mart-vue'
 import FinishSendMailForm from "@/components/login/SendedEmailForm";
+import PasswordPolicy from "@/model/PasswordPolicy";
 
 export default {
   name: "Login",
@@ -59,8 +56,13 @@ export default {
     Emoji,
     FinishSendMailForm
   },
+  mounted() {
+    this.passwordPlaceHolder = '비밀번호 '+this.passwordPolicy.getWordNumber()+'자 이상.'
+  },
   data() {
     return {
+      passwordPolicy: new PasswordPolicy(),
+      passwordPlaceHolder: '',
       registerComplete: false,
       registerForm: {
         email: '',
@@ -91,11 +93,9 @@ export default {
   },
   methods: {
     validatePassword1(rule, value, callback) {
-      console.log(value, this.registerForm.passwordChk)
-      if (value === '') {
-        callback(new Error('패스워드를 입력해주세요.'));
-      } else if (value.length < 16) {
-        callback(new Error('패스워드는 16자 이상 입력해주세요.'))
+      const validResult = this.passwordPolicy.valid(value)
+      if (!validResult.state) {
+        callback(new Error(validResult.msg));
       } else {
         if (this.registerForm.password !== '') {
           this.$refs.registerForm.validateField('passwordChk');

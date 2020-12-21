@@ -13,7 +13,7 @@
 <!--          <div class="tit ma0 txt-left"></div>-->
 <!--        </el-form-item>-->
         <el-form-item prop="newPassword">
-          <el-input type="password" v-model="newPasswordForm.newPassword" placeholder="새로운 패스워드 16자를 입력해주세요." autocomplete="off">
+          <el-input type="password" v-model="newPasswordForm.newPassword" :placeholder="passwordPlaceHolder" autocomplete="off">
             <template slot="prepend"><emoji emoji="key" :size="10" /></template>
           </el-input>
         </el-form-item>
@@ -34,6 +34,7 @@
 
 <script>
 import { Emoji } from 'emoji-mart-vue'
+import PasswordPolicy from "@/model/PasswordPolicy";
 
 export default {
   name: "NewpasswordForm",
@@ -41,10 +42,15 @@ export default {
     Emoji
   },
   props: {
-
+    token: String
+  },
+  mounted() {
+    this.passwordPlaceHolder = '새로운 패스워드 '+this.passwordPolicy.getWordNumber()+'자 이상을 입력해주세요.'
   },
   data() {
     return {
+      passwordPolicy: new PasswordPolicy(),
+      passwordPlaceHolder: '',
       newPasswordForm: {
         newPassword: '',
         newPasswordChk: ''
@@ -61,10 +67,9 @@ export default {
   },
   methods: {
     validateNewPassword1(rule, value, callback) {
-      if (value === '') {
-        callback(new Error('패스워드를 입력해주세요.'))
-      } else if (value.length < 16) {
-        callback(new Error('패스워드는 16자 이상 입력해주세요.'))
+      const validResult = this.passwordPolicy.valid(value)
+      if (!validResult.state) {
+        callback(new Error(validResult.msg))
       } else {
         if (this.newPasswordForm.newPassword !== '') {
           this.$refs.newPasswordForm.validateField('newPasswordChk');

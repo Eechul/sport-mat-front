@@ -11,7 +11,6 @@ export default {
   },
   created() {},
   mounted() {
-    console.log(this.$route.params)
   },
   data() {
     return {

@@ -5,5 +5,8 @@ export default {
     },
     getIsMisspassView: (state) => {
         return state.isMisspassView
+    },
+    getSideActive: (state) => {
+        return state.view.isMenuActive
     }
 }

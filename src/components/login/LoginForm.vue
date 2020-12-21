@@ -36,13 +36,44 @@
 
 <script>
 import { Emoji } from 'emoji-mart-vue'
+import PasswordPolicy from "@/model/PasswordPolicy";
 
 export default {
   name: "LoginForm",
   components: {
     Emoji,
   },
+  mounted() {
+    this.passwordPlaceHolder = '새로운 패스워드 '+this.passwordPolicy.getWordNumber()+'자 이상을 입력해주세요.'
+  },
+  data() {
+    return {
+      passwordPolicy: new PasswordPolicy(),
+      ruleForm: {
+        email: '',
+        pass: ''
+      },
+      rules: {
+        email: [
+          { required: true, message: '이메일을 입력해주세요.', trigger: 'blur' },
+          { type: 'email', message: '이메일 규격에 맞게 정확히 입력해주세요.', trigger: ['blur', 'change'] }
+        ],
+        password: [
+          { validator: this.validatePassword, trigger: 'blur' }
+        ]
+      }
+    };
+  },
   methods: {
+    validatePassword(rule, value, callback) {
+      const validResult = this.passwordPolicy.valid(value)
+      if (!validResult.state) {
+        callback(new Error(validResult.msg));
+      } else {
+        callback();
+      }
+    },
+
     goToPage(url) {
       this.$router.push(url)
     },
@@ -58,26 +89,9 @@ export default {
         this.$router.push('/')
       })
     }
+
+
   },
-  data() {
-    return {
-      ruleForm: {
-        email: '',
-        pass: '',
-        checkPass: '',
-        // age: ''
-      },
-      rules: {
-        email: [
-          { required: true, message: '이메일을 입력해주세요.', trigger: 'blur' },
-          { type: 'email', message: '이메일 규격에 맞게 정확히 입력해주세요.', trigger: ['blur', 'change'] }
-        ],
-        password: [
-          { required: true, message: '패스워드를 입력해주세요.', trigger: 'blur' },
-        ]
-      }
-    };
-  }
 }
 </script>
 
