@@ -6,13 +6,15 @@
           <el-tab-pane name="soccer">
             <span slot="label"><span class="sport-name">축구</span><emoji emoji="soccer" :size="16" class="tabs-emoji"/></span>
             <el-row :gutter="6">
-              <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
-                <player-card
-                    :data="data"
-                    :type="'normal'"
-                    :hidden="{sport: true, title: true, regDate: true}"
-                />
-              </el-col>
+              <el-scrollbar wrap-style="max-height: calc(100vh - 70px);" :native="true">
+                <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
+                  <player-card
+                      :data="data"
+                      :type="'normal'"
+                      :hidden="{sport: true, title: true, regDate: true}"
+                  />
+                </el-col>
+              </el-scrollbar>
             </el-row>
           </el-tab-pane>
           <el-tab-pane name="baseball">

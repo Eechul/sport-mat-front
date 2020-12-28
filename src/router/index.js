@@ -10,6 +10,7 @@ import User from "@/views/User";
 import NewpasswordForm from "@/components/user/NewpasswordForm";
 import CongratulationView from "@/components/CongratulationView";
 import Player from "@/views/Player";
+import UserProfile from "@/components/UserProfile";
 
 Vue.use(VueRouter)
 
@@ -36,7 +37,8 @@ const routes = [
               title: '가입을 축하드립니다 !',
               contentFlag: 'userRegister'
             })
-      }
+      },
+      { path: 'profile', component: UserProfile},
     ]
   },
   // { path: '/user', name: 'User', component: User },

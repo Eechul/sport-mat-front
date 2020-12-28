@@ -5,19 +5,24 @@
         <el-tabs class="grid-content" v-model="activeName" :tab-position="'left'" @tab-click="handleClick" style="width: 100%;">
           <el-tab-pane name="soccer">
             <span slot="label"><span class="sport-name">축구</span><emoji emoji="soccer" :size="16" class="tabs-emoji"/></span>
-            <el-row :gutter="6">
-              <el-scrollbar wrap-style="max-height: 50px" tag="el-col">
+            <el-row :gutter="6"  >
+              <el-scrollbar wrap-style="max-height: calc(100vh - 70px);" :native="false">
 <!--                <el-tag v-for="data in datas" :key="data.id"-->
 <!--                        type="info"-->
 <!--                        size="medium"-->
 <!--                        style="margin-right: 5px">{{data.sport}}</el-tag>-->
                 <el-col :span="cardSpan" v-for="data in datas" :key="data.id">
-                    <base-card
-                        :data="data"
-                        :type="'normal'"
-                        :hidden="{sport: true, title: true, regDate: true}"
-                    />
+                  <base-card
+                      :data="data"
+                      :type="'normal'"
+                      :hidden="{sport: true, title: true, regDate: true}"
+                  />
                 </el-col>
+                <infinite-loading @infinite="infiniteHandler">
+                  <div slot="spinner"><loading /></div>
+                  <div slot="no-more">No more message</div>
+                  <div slot="no-results">No results message</div>
+                </infinite-loading>
               </el-scrollbar>
             </el-row>
           </el-tab-pane>
@@ -79,14 +84,19 @@
 <script>
 import { Emoji } from 'emoji-mart-vue'
 import BaseCard from "@/components/card/BaseCard";
+import InfiniteLoading from 'vue-infinite-loading';
+import Loading from "@/components/loading/Loading";
 
 export default {
   components: {
     Emoji,
-    BaseCard
+    BaseCard,
+    InfiniteLoading,
+    Loading
   },
   data() {
     return {
+      count: 0,
       activeName: 'soccer',
       datas: [
       { id: '5', sport: 'soccer', team: '금하', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
@@ -119,7 +129,22 @@ export default {
 
     },
     goTeamDetail() {
-      console.log('22')
+      // console.log('22')
+    },
+    infiniteHandler($state) {
+      console.log('infiniteHandler ?', $state)
+      // let testDatas = [
+      //   { id: this.datas.length+1+'', sport: 'volleyball', team: '동아', title: '동아', location: '인천 남동구', startDate: '2020-11-21', img: '', regDate: new Date() },
+      //   { id: this.datas.length+2+'', sport: 'basketball', team: '기아', title: '기아', location: '서울 관악구', startDate: '2020-11-11', img: '', regDate: new Date() },
+      //   { id:this.datas.length+3+'', sport: 'soccer', team: '금하', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
+      // ]
+      // this.datas.push( ...testDatas )
+      //
+      // if(this.datas.length > 20) {
+      //   $state.reset()
+      // } else {
+      //   $state.loaded()
+      // }
     }
   }
 }
