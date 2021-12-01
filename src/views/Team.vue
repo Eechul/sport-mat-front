@@ -6,7 +6,7 @@
           <el-tab-pane name="soccer">
             <span slot="label"><span class="sport-name">축구</span><emoji emoji="soccer" :size="16" class="tabs-emoji"/></span>
             <el-row :gutter="6"  >
-              <el-scrollbar wrap-style="max-height: calc(100vh - 70px);" :native="false">
+              <el-scrollbar wrap-style="height: calc(100vh - 70px);" :native="false">
 <!--                <el-tag v-for="data in datas" :key="data.id"-->
 <!--                        type="info"-->
 <!--                        size="medium"-->
