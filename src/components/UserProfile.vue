@@ -1,7 +1,7 @@
 <template>
     <el-row>
       <el-col :span="24">
-        <el-avatar :size="24" ></el-avatar>
+        <el-avatar :size="50" icon="el-icon-user-solid" />
       </el-col>
     </el-row>
 </template>

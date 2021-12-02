@@ -18,12 +18,9 @@
                       :hidden="{sport: true, title: true, regDate: true}"
                   />
                 </el-col>
-                <infinite-loading @infinite="infiniteHandler">
-                  <div slot="spinner"><loading /></div>
-                  <div slot="no-more">No more message</div>
-                  <div slot="no-results">No results message</div>
-                </infinite-loading>
+                <Infinite-loading :loadFunc="testLoad"></Infinite-loading>
               </el-scrollbar>
+              
             </el-row>
           </el-tab-pane>
           <el-tab-pane name="baseball">
@@ -84,15 +81,13 @@
 <script>
 import { Emoji } from 'emoji-mart-vue'
 import BaseCard from "@/components/card/BaseCard";
-import InfiniteLoading from 'vue-infinite-loading';
-import Loading from "@/components/loading/Loading";
+import InfiniteLoading from "@/components/loading/InfiniteLoading";
 
 export default {
   components: {
     Emoji,
     BaseCard,
-    InfiniteLoading,
-    Loading
+    InfiniteLoading
   },
   data() {
     return {
@@ -131,20 +126,8 @@ export default {
     goTeamDetail() {
       // console.log('22')
     },
-    infiniteHandler($state) {
-      console.log('infiniteHandler ?', $state)
-      // let testDatas = [
-      //   { id: this.datas.length+1+'', sport: 'volleyball', team: '동아', title: '동아', location: '인천 남동구', startDate: '2020-11-21', img: '', regDate: new Date() },
-      //   { id: this.datas.length+2+'', sport: 'basketball', team: '기아', title: '기아', location: '서울 관악구', startDate: '2020-11-11', img: '', regDate: new Date() },
-      //   { id:this.datas.length+3+'', sport: 'soccer', team: '금하', title: '금하', location: '서울 동작구', startDate: '2020-11-01', img: '', regDate: new Date() },
-      // ]
-      // this.datas.push( ...testDatas )
-      //
-      // if(this.datas.length > 20) {
-      //   $state.reset()
-      // } else {
-      //   $state.loaded()
-      // }
+    testLoad() {
+      console.log('test Load');
     }
   }
 }
