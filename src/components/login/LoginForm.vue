@@ -73,7 +73,6 @@ export default {
         callback();
       }
     },
-
     goToPage(url) {
       this.$router.push(url)
     },

@@ -1,7 +1,7 @@
 <template>
   <div id="team-container" class="sub-container">
     <el-row>
-      <el-col :span="24" @click="goTeamDetail">
+      <el-col :span="24">
         <el-tabs class="grid-content" v-model="activeName" :tab-position="'left'" @tab-click="handleClick" style="width: 100%;">
           <el-tab-pane name="soccer">
             <span slot="label"><span class="sport-name">축구</span><emoji emoji="soccer" :size="16" class="tabs-emoji"/></span>

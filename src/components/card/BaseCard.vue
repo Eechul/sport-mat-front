@@ -10,16 +10,11 @@
         <div class="bottom-content">
           <div v-if="!hidden['title']">{{ data.title }}</div>
           <div v-if="true">활동장소: 서울 동작구</div>
-          <div>팀원 수: 1,000명</div>
-          <div>평균연령: 20대</div>
-          <div class="bottom clearfix" v-if="!hidden['regDate']">
-            <div class="time">{{ data.regDate | moment('YYYY-MM-DD HH:mm') }}</div>
-          </div>
+          <el-button @click="goToTeamDetailPage(1)">자세히보기</el-button>
         </div>
       </el-card>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -39,6 +34,11 @@ export default {
   },
   mounted() {
 
+  },
+  methods: {
+    goToTeamDetailPage(teamNo) {
+      this.$router.push(`/team/${teamNo}`);
+    }
   },
   data() {
     return {
@@ -111,7 +111,7 @@ export default {
   .bottom-content > div:last-child {
     padding-bottom: 0px;
   }
-
-  .team-content {
+  .el-button{
+    width: 100%;
   }
 </style>

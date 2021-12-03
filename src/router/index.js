@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
 import Team from "@/views/Team"
+import TeamDetail from "@/views/TeamDetail"
 import Login from "@/views/Login"
 import MisspasswordForm from "@/components/login/MisspasswordForm";
 import UserRegister from "@/components/login/UserRegisterForm";
@@ -17,6 +18,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/',  name: 'Main',  component: Home },
   { path: '/team', name: 'Team', component: Team },
+  { path: '/team/:no', name: 'TeamDetail', component: TeamDetail },
   { path: '/player', name: 'Player', component: Player },
   { path: '/login', name: 'Login', component: Login,
     children: [
